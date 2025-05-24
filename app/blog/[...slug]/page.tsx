@@ -14,8 +14,8 @@ interface PostPageProps {
 
 async function getPostFromParams(params: PostPageProps["params"]) {
   const slug = params?.slug?.join("/");
-  const post = posts.find((post) => post.slugAsParams === slug);
-
+  const decodedSlug = decodeURIComponent(slug);
+  const post = posts.find((post) => post.slugAsParams === decodedSlug);
   return post;
 }
 
